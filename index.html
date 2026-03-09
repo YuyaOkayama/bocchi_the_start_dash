@@ -2,15 +2,19 @@
 <html lang="ja">
 
 <head>
-    <meta charset="uft-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <script src="main.js"></script>
     <title>SD練習</title>
-    <h1>SD</h1>
 </head>
 
 <body>
-    <button class="play_stop" id="play_btn" onclick="clicked()">再生</button>
-    <span id="status_text" style="margin-left: 10px; font-weight: bold; color: red; display: none;">再生中</span>
+    <h1 class="main-title">bocchi the SD</h1>
+    <div class="header-controls">
+        <button class="play_stop" id="play_btn" onclick="clicked()">再生</button>
+        <span id="status_text" style="display: none;">再生中</span>
+    </div>
     <div>
         <h1>再生 ~ on your marks</h1>
         <table>

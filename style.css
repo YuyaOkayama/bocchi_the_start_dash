@@ -1,0 +1,263 @@
+:root {
+  --bg-color: #121212;
+  --text-main: #ffffff;
+  --text-muted: #aaaaaa;
+  --accent-color: #00e676;
+  --accent-hover: #00c853;
+  --danger-color: #ff5252;
+  --card-bg: #1e1e1e;
+  --border-radius: 16px;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  margin: 0;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.main-title {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 24px;
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #00e676, #00b0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+}
+
+.header-controls {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.play_stop, .reset {
+  appearance: none;
+  background-color: var(--accent-color);
+  color: #000;
+  border: none;
+  border-radius: 50px;
+  padding: 18px 40px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.1s, background-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 20px rgba(0, 230, 118, 0.3);
+  width: 100%;
+  max-width: 320px;
+  display: block;
+}
+
+.play_stop:active, .reset:active {
+  transform: scale(0.95);
+  box-shadow: 0 4px 10px rgba(0, 230, 118, 0.2);
+}
+
+.reset {
+  background-color: #333333;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  font-size: 1.2rem;
+  padding: 14px 30px;
+}
+
+.reset:active {
+  background-color: #222222;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+#status_text {
+  display: block;
+  text-align: center;
+  margin-top: 16px;
+  color: var(--danger-color);
+  font-size: 1.2rem;
+  font-weight: bold;
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0.6; transform: scale(0.95); }
+}
+
+div {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  box-sizing: border-box;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+div h1 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: var(--text-muted);
+  border-bottom: 1px solid #333;
+  padding-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+
+div h1::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  margin-right: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 12px 0;
+  vertical-align: middle;
+}
+
+/* 1列目: ラベル */
+td:nth-child(1) {
+  width: 60px;
+  font-weight: 600;
+  color: #dddddd;
+  white-space: nowrap;
+}
+
+/* 2列目: スライダー */
+td:nth-child(2) {
+  width: auto;
+  padding: 0 15px;
+}
+
+/* 3列目: 秒数表示 */
+td:nth-child(3) {
+  width: 65px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* レンジスライダーのスタイル */
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: #3a3a3a;
+  border-radius: 4px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  transition: transform 0.1s;
+}
+
+input[type=range]::-webkit-slider-thumb:active {
+  transform: scale(1.15);
+  background: var(--accent-hover);
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: #3a3a3a;
+  border-radius: 4px;
+}
+
+input[type=range]::-moz-range-thumb {
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  transition: transform 0.1s;
+}
+
+input[type=range]::-moz-range-thumb:active {
+  transform: scale(1.15);
+  background: var(--accent-hover);
+}
+
+/* 秒数表示のスタイル */
+a[id$="sec"] {
+  display: inline-block;
+  min-width: 50px;
+  text-align: center;
+  background: #2a2a2a;
+  color: var(--accent-color);
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  border: 1px solid #444;
+}
+
+/* 余白調整のための特別なクラス（不要なdivスタイリングがボタンを囲むdivなどに適用されるのを防ぐ） */
+div:has(> .reset) {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.header-controls {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+/* スマホ用の微調整 */
+@media screen and (max-width: 480px) {
+  .play_stop {
+    font-size: 1.3rem;
+    padding: 16px 30px;
+  }
+  
+  .main-title {
+    font-size: 1.6rem;
+  }
+}

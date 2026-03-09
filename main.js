@@ -3,7 +3,7 @@ window.onload = function () {
     let l_mark_ele = document.getElementById('l_marks_sli');
     var obj_f_m = document.getElementById('f_marks_sec');
     var obj_l_m = document.getElementById('l_marks_sec');
-    
+
     obj_f_m.textContent = f_mark_ele.value + "秒";
     obj_l_m.textContent = l_mark_ele.value + "秒";
 
@@ -75,6 +75,7 @@ function clicked() {
             currentAudio.currentTime = 0;
             currentAudio = null;
         }
+        setSlidersDisabled(false);
         return;
     }
 
@@ -82,6 +83,7 @@ function clicked() {
     isPlaying = true;
     playBtn.textContent = "停止";
     statusText.style.display = "inline";
+    setSlidersDisabled(true);
 
     const fMarks = parseFloat(document.getElementById('f_marks_sli').value) || 0;
     const lMarks = parseFloat(document.getElementById('l_marks_sli').value) || 0;
@@ -124,6 +126,7 @@ function clicked() {
                             isPlaying = false;
                             playBtn.textContent = "再生";
                             statusText.style.display = "none";
+                            setSlidersDisabled(false);
                             currentAudio = null;
                             currentTimeout = null;
                         });
@@ -139,6 +142,28 @@ function getRandomDelay(minSec, maxSec) {
     const min = Math.min(minSec, maxSec);
     const max = Math.max(minSec, maxSec);
     return (Math.random() * (max - min) + min) * 1000;
+}
+
+function setSlidersDisabled(disabled) {
+    const sliders = [
+        'f_marks_sli', 'l_marks_sli',
+        'f_set_sli', 'l_set_sli',
+        'f_start_sli', 'l_start_sli'
+    ];
+    sliders.forEach(id => {
+        const ele = document.getElementById(id);
+        if (ele) {
+            ele.disabled = disabled;
+            // 見た目も少し暗くする
+            if (disabled) {
+                ele.style.opacity = '0.5';
+                ele.style.cursor = 'not-allowed';
+            } else {
+                ele.style.opacity = '1';
+                ele.style.cursor = 'pointer';
+            }
+        }
+    });
 }
 
 // リセットボタン押下時の処理
